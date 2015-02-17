@@ -1,12 +1,13 @@
 {
     "name": "genealabs/bones-library",
-    "description": "",
-    "authors": [
-        {
-            "name": "Mike Bronner",
-            "email": "hello@genealabs.com"
-        }
-    ],
+  "description": "Page (with categories) publication module.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "GeneaLabs, LLC",
+      "email": "hello@genealabs.com"
+    }
+  ],
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "4.2.*"
