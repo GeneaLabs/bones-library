@@ -24,10 +24,12 @@
                         </h2>
                         <div class="clearfix"></div>
                     </div>
-                    <div id="collapse-{{ $page->id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-{{ $page->id }}">
+                    <div id="collapse-{{ $page->id }}" class="panel-collapse collapse {{ ($book->pages->count() == 1) ?: 'in' }}" role="tabpanel" aria-labelledby="heading-{{ $page->id }}">
+                        @if (strlen(trim($page->summary)))
                         <div class="panel-body">
                             {{ Markdown::string($page->summary) }}
                         </div>
+                        @endif
                         <div class="panel-body">
                             {{ Markdown::string($page->content) }}
                         </div>
