@@ -1,8 +1,9 @@
 <?php namespace GeneaLabs\Bones\Library;
 
-use \Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class BonesLibraryServiceProvider extends ServiceProvider {
+class BonesLibraryServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Indicates if loading of the provider is deferred.
