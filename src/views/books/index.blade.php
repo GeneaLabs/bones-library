@@ -12,7 +12,7 @@
             @foreach($books as $book)
                 <a {{ ((Auth::user()->hasPermissionTo('inspect', 'any', 'book')) ? 'href="' . route('books.show', $book->id) . '"' : '') }} class="list-group-item">
                     <h4 class="list-group-item-heading">{{ $book->title }}</h4>
-                    <p class="list-group-item-text">{{ $book->description }}</p>
+                    <p class="list-group-item-text">{{ Markdown::string($book->description) }}</p>
                 </a>
             @endforeach
         </div>

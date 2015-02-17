@@ -16,7 +16,7 @@ class BooksController extends \BaseController
 	 */
 	public function index()
 	{
-        if (Auth::user()->hasAccessTo('view', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('view', 'any', 'book')) {
             $books = Book::orderBy('title')->get();
 
             return View::make('bones-library::books.index', compact('books'));
@@ -31,7 +31,7 @@ class BooksController extends \BaseController
 	 */
 	public function create()
 	{
-        if (Auth::user()->hasAccessTo('create', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('create', 'any', 'book')) {
             return View::make('bones-library::books.create');
         }
 
@@ -41,7 +41,7 @@ class BooksController extends \BaseController
 
     public function show($id)
     {
-        if (Auth::user()->hasAccessTo('inspect', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('inspect', 'any', 'book')) {
             $book = Book::findOrFail($id);
 
             return View::make('bones-library::books.show', compact('book'));
@@ -57,7 +57,7 @@ class BooksController extends \BaseController
 	 */
 	public function store()
 	{
-        if (Auth::user()->hasAccessTo('create', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('create', 'any', 'book')) {
             Book::create(Input::all());
 
             // @todo: add success flash message
@@ -76,7 +76,7 @@ class BooksController extends \BaseController
 	 */
 	public function edit($id)
 	{
-        if (Auth::user()->hasAccessTo('edit', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('edit', 'any', 'book')) {
             $book = Book::findOrFail($id);
 
             return View::make('bones-library::books.edit', compact('book'));
@@ -95,7 +95,7 @@ class BooksController extends \BaseController
 	 */
 	public function update($id)
 	{
-        if (Auth::user()->hasAccessTo('edit', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('edit', 'any', 'book')) {
             $book = Book::findOrFail($id);
             $book->fill(Input::all());
             $book->save();
@@ -117,7 +117,7 @@ class BooksController extends \BaseController
 	 */
 	public function destroy($id)
 	{
-        if (Auth::user()->hasAccessTo('remove', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('remove', 'any', 'book')) {
             Book::destroy($id);
 
             return Redirect::route('books.index');

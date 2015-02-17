@@ -53,7 +53,7 @@ class PagesController extends \BaseController
             Page::create(Input::all());
 
             // @todo: add success flash message
-            return Redirect::route('pages.index');
+            return Redirect::route('books.show', Input::get('book_id'));
         }
         // @todo: add failure flash message
 
@@ -94,7 +94,7 @@ class PagesController extends \BaseController
             $page->save();
 
             // @todo: add success flash message
-            return Redirect::route('pages.index');
+            return Redirect::route('books.show', Input::get('book_id'));
         }
         // @todo: add failure flash message
 
