@@ -1,0 +1,23 @@
+{
+    "name": "genealabs/bones-library",
+    "description": "",
+    "authors": [
+        {
+            "name": "Mike Bronner",
+            "email": "hello@genealabs.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-4": {
+            "GeneaLabs\\Bones\\Library\\": "src/GeneaLabs/Bones/Library"
+        }
+    },
+    "minimum-stability": "stable"
+}
