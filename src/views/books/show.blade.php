@@ -3,8 +3,11 @@
 @section('innerContent')
     <h1 class="page-header">
         {{ $book->title }}
-        @if (Auth::check() && Auth::user()->hasPermissionTo('create', 'any', 'book'))
+        @if (Auth::check() && Auth::user()->hasPermissionTo('edit', 'any', 'book'))
             {{ link_to_route('books.edit', 'Edit This Book', $book->id, ['class' => 'btn btn-default btn-lg pull-right']) }}
+        @endif
+        @if (Auth::check() && Auth::user()->hasPermissionTo('create', 'any', 'page'))
+            {{ link_to_route('pages.create', 'Add New Page', null, ['class' => 'btn btn-primary btn-lg pull-right']) }}
         @endif
     </h1>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
