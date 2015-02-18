@@ -1,6 +1,7 @@
 @extends(Config::get('bones-library::layoutView'))
 
 @section('content')
+    {{ HTML::script('/packages/genealabs/bones-library/js/selectize.min.js') }}
     {{ HTML::script('/packages/genealabs/bones-library/js/scripts.js') }}
     <style>
         @import url('/packages/genealabs/bones-library/css/styles.css');
