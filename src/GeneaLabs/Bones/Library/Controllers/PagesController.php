@@ -33,9 +33,7 @@ class PagesController extends \BaseController
     {
         if (Auth::user()->hasAccessTo('create', 'any', 'page')) {
             $books = Book::orderBy('title')->get();
-            if (Input::has('book')) {
-                $selectedBook = Input::get('book');
-            }
+            $selectedBook = (Input::has('book')) ?: Input::get('book');
 
             return View::make('bones-library::pages.create', compact('books', 'selectedBook'));
         }
