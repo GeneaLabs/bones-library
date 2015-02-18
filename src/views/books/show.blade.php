@@ -7,7 +7,7 @@
                 {{ link_to_route('books.edit', 'Edit This Book', $book->id, ['class' => 'btn btn-default']) }}
             @endif
             @if (Auth::check() && Auth::user()->hasPermissionTo('create', 'any', 'page'))
-                {{ link_to_route('pages.create', 'Add New Page', null, ['class' => 'btn btn-primary']) }}
+                {{ link_to_route('pages.create', 'Add New Page', ['book' => $book->id], ['class' => 'btn btn-primary']) }}
             @endif
         </div>
         <h1>{{ $book->title }}</h1>
