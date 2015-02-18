@@ -4,7 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Roles & Permissions Management</title>
+        <title>Publication Management</title>
+        {{ HTML::script('/packages/genealabs/bones-library/js/bootstrap.min.js') }}
+        {{ HTML::script('/packages/genealabs/bones-library/js/selectize.min.js') }}
+        {{ HTML::style('/packages/genealabs/bones-library/css/selectize.bootstrap3.css') }}
+        {{ HTML::style('/packages/genealabs/bones-library/css/styles.css') }}
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
         <!--[if lt IE 9]>
