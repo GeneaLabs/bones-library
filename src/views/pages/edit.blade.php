@@ -8,7 +8,7 @@
             <div class="form-group{{ (count($errors) > 0) ? (($errors->has('title')) ? ' has-feedback has-error' : ' has-feedback has-success') : ''; }}">
                 {{ Form::label('book_id', 'Book', ['class' => 'control-label col-sm-2']) }}
                 <div class="col-sm-5">
-                    {{ Form::select('book_id', $books->lists('title', 'id'), null, ['class' => 'form-control', ((Auth::user()->hasPermissionTo('edit', 'any', 'page')) ? '' : 'disabled')]) }}
+                    {{ Form::select('book_id', $books->lists('title', 'id'), $page->book_id, ['class' => 'form-control', ((Auth::user()->hasPermissionTo('edit', 'any', 'page')) ? '' : 'disabled')]) }}
                     @if (count($errors))
                         <span class="glyphicon {{ ($errors->has('title')) ? ' glyphicon-remove' : ' glyphicon-ok'; }} form-control-feedback"></span>
                     @endif
