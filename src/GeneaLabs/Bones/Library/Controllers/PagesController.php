@@ -33,7 +33,7 @@ class PagesController extends \BaseController
     {
         if (Auth::user()->hasAccessTo('create', 'any', 'page')) {
             $books = Book::orderBy('title')->get();
-            $selectedBook = (Input::has('book')) ?: Input::get('book');
+            $selectedBook = (Input::has('book')) ? Input::get('book') : null;
 
             return View::make('bones-library::pages.create', compact('books', 'selectedBook'));
         }
@@ -112,9 +112,10 @@ class PagesController extends \BaseController
     public function destroy($id)
     {
         if (Auth::user()->hasAccessTo('remove', 'any', 'page')) {
+            $bookId = Page::findOrFail($id)->book->id;
             Page::destroy($id);
 
-            return Redirect::route('pages.index');
+            return Redirect::route('books.show', $bookId);
         }
     }
 }
