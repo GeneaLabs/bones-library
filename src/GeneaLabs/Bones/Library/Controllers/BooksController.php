@@ -3,8 +3,6 @@
 use GeneaLabs\Bones\Library\Models\Book;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\View;
 
 class BooksController extends Controller
 {
@@ -19,7 +17,7 @@ class BooksController extends Controller
         if (Auth::check() && Auth::user()->hasAccessTo('view', 'any', 'book')) {
             $books = Book::orderBy('title')->get();
 
-            return View::make('bones-library::books.index', compact('books'));
+            return view('genealabs-bones-library::books.index', compact('books'));
         }
 	}
 
@@ -31,12 +29,12 @@ class BooksController extends Controller
 	 */
 	public function create()
 	{
-        if (Auth::check() && Auth::user()->hasAccessTo('create', 'any', 'book')) {
-            return View::make('bones-library::books.create');
+        if (Auth::check() && Auth::user()->hasAccessTo('add', 'any', 'book')) {
+            return view('genealabs-bones-library::books.create');
         }
 
         // @todo: add access denied flash message
-        return View::make('bones-library::books.index');
+        return view('genealabs-bones-library::books.index');
 	}
 
     public function show($id)
@@ -44,10 +42,10 @@ class BooksController extends Controller
         if (Auth::check() && Auth::user()->hasAccessTo('inspect', 'any', 'book')) {
             $book = Book::findOrFail($id);
 
-            return View::make('bones-library::books.show', compact('book'));
+            return view('genealabs-bones-library::books.show', compact('book'));
         }
 
-        return View::make('bones-library::books.index');
+        return view('genealabs-bones-library::books.index');
     }
 
 	/**
@@ -57,15 +55,15 @@ class BooksController extends Controller
 	 */
 	public function store()
 	{
-        if (Auth::check() && Auth::user()->hasAccessTo('create', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('add', 'any', 'book')) {
             Book::create(Input::all());
 
             // @todo: add success flash message
-            return Redirect::route('books.index');
+            return redirect()->route('books.index');
         }
         // @todo: add failure flash message
 
-        return Redirect::route('books.index');
+        return redirect()->route('books.index');
     }
 
 	/**
@@ -76,14 +74,14 @@ class BooksController extends Controller
 	 */
 	public function edit($id)
 	{
-        if (Auth::check() && Auth::user()->hasAccessTo('edit', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('change', 'any', 'book')) {
             $book = Book::findOrFail($id);
 
-            return View::make('bones-library::books.edit', compact('book'));
+            return view('genealabs-bones-library::books.edit', compact('book'));
         }
 
         // @todo: add access denied flash message
-        return View::make('bones-library::books.index');
+        return view('genealabs-bones-library::books.index');
 	}
 
 
@@ -95,17 +93,17 @@ class BooksController extends Controller
 	 */
 	public function update($id)
 	{
-        if (Auth::check() && Auth::user()->hasAccessTo('edit', 'any', 'book')) {
+        if (Auth::check() && Auth::user()->hasAccessTo('change', 'any', 'book')) {
             $book = Book::findOrFail($id);
             $book->fill(Input::all());
             $book->save();
 
             // @todo: add success flash message
-            return Redirect::route('books.index');
+            return redirect()->route('books.index');
         }
         // @todo: add failure flash message
 
-        return Redirect::route('books.index');
+        return redirect()->route('books.index');
 	}
 
 
@@ -120,7 +118,7 @@ class BooksController extends Controller
         if (Auth::check() && Auth::user()->hasAccessTo('remove', 'any', 'book')) {
             Book::destroy($id);
 
-            return Redirect::route('books.index');
+            return redirect()->route('books.index');
         }
 	}
 }

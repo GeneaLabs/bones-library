@@ -1,10 +1,12 @@
-@extends(Config::get('bones-library::layoutView'))
+@extends(config('genealabs-bones-library.layoutView'))
 
 @section('content')
-    {{ HTML::script('/packages/genealabs/bones-library/js/selectize.min.js') }}
-    {{ HTML::script('/packages/genealabs/bones-library/js/scripts.js') }}
+    <script src="{{ asset('genealabs-bones-library/js/selectize.min.js') }}"></script>
+    <script src="{{ asset('genealabs-bones-library/js/scripts.js') }}"></script>
+    <script src="{{ asset('genealabs-bones-library/js/bootstrap-markdown.js') }}"></script>
     <style>
-        @import url('/packages/genealabs/bones-library/css/styles.css');
+        @import url('{{ asset('genealabs-bones-library/css/styles.css') }}');
+        @import url('{{ asset('genealabs-bones-library/css/bootstrap-markdown.min.css') }}');
     </style>
     <div class="container">
         {{--@include('bones-library::menu')--}}

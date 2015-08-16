@@ -23,8 +23,8 @@ class BonesLibraryServiceProvider extends ServiceProvider
             require __DIR__ . '/../../../routes.php';
         }
 
-        $this->publishes([__DIR__ . '/../../../../public' => public_path('genealabs/bones-library')], 'genealabs-bones-library');
-        $this->publishes([__DIR__ . '/../../../migrations' => base_path('database/migrations')], 'genealabs-bones-library');
+        $this->loadViewsFrom(__DIR__ . '/../../../views', 'genealabs-bones-library');
+        $this->publishes([__DIR__ . '/../../../../public' => public_path('genealabs-bones-library')], 'genealabs-bones-library');
 	}
 
 	/**
@@ -44,7 +44,7 @@ class BonesLibraryServiceProvider extends ServiceProvider
 	 */
 	public function provides()
 	{
-		return array('genealabs-bones-library');
+		return ['genealabs-bones-library'];
 	}
 
 }

@@ -19,7 +19,7 @@ class PagesController extends Controller
         if (Auth::user()->hasAccessTo('view', 'any', 'page')) {
             $pages = Page::orderBy('title')->get();
 
-            return view('bones-library::pages.index', compact('pages'));
+            return view('genealabs-bones-library::pages.index', compact('pages'));
         }
     }
 
@@ -31,15 +31,15 @@ class PagesController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->hasAccessTo('create', 'any', 'page')) {
+        if (Auth::user()->hasAccessTo('add', 'any', 'page')) {
             $books = Book::orderBy('title')->get();
             $selectedBook = (Input::has('book')) ? Input::get('book') : null;
 
-            return view('bones-library::pages.create', compact('books', 'selectedBook'));
+            return view('genealabs-bones-library::pages.create', compact('books', 'selectedBook'));
         }
 
         // @todo: add access denied flash message
-        return view('bones-library::pages.index');
+        return view('genealabs-bones-library::pages.index');
     }
 
 
@@ -50,7 +50,7 @@ class PagesController extends Controller
      */
     public function store()
     {
-        if (Auth::user()->hasAccessTo('create', 'any', 'page')) {
+        if (Auth::user()->hasAccessTo('add', 'any', 'page')) {
             Page::create(Input::all());
 
             // @todo: add success flash message
@@ -69,15 +69,15 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        if (Auth::user()->hasAccessTo('edit', 'any', 'page')) {
+        if (Auth::user()->hasAccessTo('change', 'any', 'page')) {
             $page = Page::findOrFail($id);
             $books = Book::orderBy('title')->get();
 
-            return view('bones-library::pages.edit', compact('page', 'books'));
+            return view('genealabs-bones-library::pages.edit', compact('page', 'books'));
         }
 
         // @todo: add access denied flash message
-        return view('bones-library::pages.index');
+        return view('genealabs-bones-library::pages.index');
     }
 
 
@@ -89,7 +89,7 @@ class PagesController extends Controller
      */
     public function update($id)
     {
-        if (Auth::user()->hasAccessTo('edit', 'any', 'page')) {
+        if (Auth::user()->hasAccessTo('change', 'any', 'page')) {
             $page = Page::findOrFail($id);
             $page->fill(Input::all());
             $page->save();

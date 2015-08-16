@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'layoutView' => 'bones-library::layout',
+    'layoutView' => 'genealabs-bones-library::layout',
 ];

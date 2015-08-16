@@ -1,9 +1,9 @@
-@extends('bones-library::master')
+@extends('genealabs-bones-library::master')
 
 @section('innerContent')
     <div class="page-header">
-        @if (Auth::check() && Auth::user()->hasPermissionTo('create', 'any', 'page'))
-            {{ link_to_route('pages.create', 'Add New Page', null, ['class' => 'btn btn-success btn-lg pull-right']) }}
+        @if (Auth::check() && Auth::user()->hasPermissionTo('add', 'any', 'page'))
+            {!! link_to_route('pages.create', 'Add New Page', null, ['class' => 'btn btn-success btn-lg pull-right']) !!}
         @endif
         <h1>Pages</h1>
     </div>
@@ -23,7 +23,7 @@
                 You don't have access to view pages. Please contact your admin to check if you have the necessary permissions.
             </div>
             <div class="panel-footer">
-                {{ link_to('/', 'Return to home page.', ['class' => 'btn btn-success']) }}
+                {!! link_to('/', 'Return to home page.', ['class' => 'btn btn-success']) !!}
             </div>
         </div>
     @endif
