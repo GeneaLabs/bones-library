@@ -24,7 +24,7 @@ class BonesLibraryServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__ . '/../../../views', 'genealabs-bones-library');
-        $this->publishes([__DIR__ . '/../../../../public' => public_path('genealabs-bones-library')], 'genealabs-bones-library');
+        $this->publishes([__DIR__ . '/../../../../public' => public_path('genealabs/bones-library')], 'genealabs-bones-library');
 	}
 
 	/**
