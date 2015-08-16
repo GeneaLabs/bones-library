@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
-class PagesController extends \BaseController
+class PagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class PagesController extends \BaseController
         if (Auth::user()->hasAccessTo('view', 'any', 'page')) {
             $pages = Page::orderBy('title')->get();
 
-            return View::make('bones-library::pages.index', compact('pages'));
+            return view('bones-library::pages.index', compact('pages'));
         }
     }
 
@@ -35,11 +35,11 @@ class PagesController extends \BaseController
             $books = Book::orderBy('title')->get();
             $selectedBook = (Input::has('book')) ? Input::get('book') : null;
 
-            return View::make('bones-library::pages.create', compact('books', 'selectedBook'));
+            return view('bones-library::pages.create', compact('books', 'selectedBook'));
         }
 
         // @todo: add access denied flash message
-        return View::make('bones-library::pages.index');
+        return view('bones-library::pages.index');
     }
 
 
@@ -58,7 +58,7 @@ class PagesController extends \BaseController
         }
         // @todo: add failure flash message
 
-        return Redirect::route('pages.index');
+        return redirect()->route('pages.index');
     }
 
     /**
@@ -73,11 +73,11 @@ class PagesController extends \BaseController
             $page = Page::findOrFail($id);
             $books = Book::orderBy('title')->get();
 
-            return View::make('bones-library::pages.edit', compact('page', 'books'));
+            return view('bones-library::pages.edit', compact('page', 'books'));
         }
 
         // @todo: add access denied flash message
-        return View::make('bones-library::pages.index');
+        return view('bones-library::pages.index');
     }
 
 
@@ -95,11 +95,11 @@ class PagesController extends \BaseController
             $page->save();
 
             // @todo: add success flash message
-            return Redirect::route('books.show', Input::get('book_id'));
+            return redirect()->route('books.show', Input::get('book_id'));
         }
         // @todo: add failure flash message
 
-        return Redirect::route('pages.index');
+        return redirect()->route('pages.index');
     }
 
 
@@ -115,7 +115,7 @@ class PagesController extends \BaseController
             $bookId = Page::findOrFail($id)->book->id;
             Page::destroy($id);
 
-            return Redirect::route('books.show', $bookId);
+            return redirect()->route('books.show', $bookId);
         }
     }
 }

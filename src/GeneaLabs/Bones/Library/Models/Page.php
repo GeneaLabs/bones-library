@@ -1,6 +1,8 @@
 <?php namespace GeneaLabs\Bones\Library\Models;
 
-class Page extends \BaseModel
+use Illuminate\Database\Eloquent\Model;
+
+class Page extends Model
 {
     public static $snakeAttributes = false;
 	protected $rules = [

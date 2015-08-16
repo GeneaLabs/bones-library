@@ -1,6 +1,8 @@
 <?php namespace GeneaLabs\Bones\Library\Models;
 
-class Book extends \BaseModel
+use Illuminate\Database\Eloquent\Model;
+
+class Book extends Model
 {
     public static $snakeAttributes = false;
 	protected $rules = [
