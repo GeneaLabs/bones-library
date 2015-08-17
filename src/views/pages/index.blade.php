@@ -12,7 +12,7 @@
             @foreach($pages as $page)
                 <a {{ ((Auth::user()->hasPermissionTo('edit', 'any', 'page')) ? 'href="' . route('pages.edit', $page->id) . '"' : '') }} class="list-group-item">
                     <h4 class="list-group-item-heading">{{ $page->title }}</h4>
-                    <p class="list-group-item-text">{{ $page->summary }}</p>
+                    <p class="list-group-item-text">{{ Parsedown::text($page->summary) }}</p>
                 </a>
             @endforeach
         </div>

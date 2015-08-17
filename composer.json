@@ -13,7 +13,7 @@
         "illuminate/support": "~5",
         "genealabs/bones-keeper": "0.*",
         "laravelcollective/html": "~5.0",
-      "graham-campbell/markdown": "^4.0"
+      "erusev/parsedown": "^1.5"
     },
     "autoload": {
         "classmap": [
