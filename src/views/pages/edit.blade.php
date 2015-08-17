@@ -29,7 +29,7 @@
             <div class="form-group{{ (count($errors) > 0) ? (($errors->has('summary')) ? ' has-feedback has-error' : ' has-feedback has-success') : '' }}">
                 {!! Form::label('summary', 'Summary', ['class' => 'control-label col-sm-2']) !!}
                 <div class="col-sm-5">
-                    {!! Form::textarea('summary', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('summary', null, ['class' => 'form-control', 'data-provide' => 'markdown']) !!}
                     @if (count($errors))
                         <span class="glyphicon {{ ($errors->has('summary')) ? ' glyphicon-remove' : ' glyphicon-ok' }} form-control-feedback"></span>
                     @endif
@@ -39,7 +39,7 @@
             <div class="form-group{{ (count($errors) > 0) ? (($errors->has('content')) ? ' has-feedback has-error' : ' has-feedback has-success') : '' }}">
                 {!! Form::label('content', 'Content', ['class' => 'control-label col-sm-2']) !!}
                 <div class="col-sm-5">
-                    {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('content', null, ['class' => 'form-control', 'data-provide' => 'markdown']) !!}
                     @if (count($errors))
                         <span class="glyphicon {{ ($errors->has('content')) ? ' glyphicon-remove' : ' glyphicon-ok' }} form-control-feedback"></span>
                     @endif

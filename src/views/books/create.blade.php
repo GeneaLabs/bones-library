@@ -17,7 +17,7 @@
             <div class="form-group{{ (count($errors) > 0) ? (($errors->has('description')) ? ' has-feedback has-error' : ' has-feedback has-success') : '' }}">
                 {!! Form::label('description', 'Description', ['class' => 'control-label col-sm-2']) !!}
                 <div class="col-sm-5">
-                    {!! Form::textarea('description', null, ['class' => 'form-control', 'data-provide' => 'markdown']) !!}
+                    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                     @if (count($errors))
                     <span class="glyphicon {{ ($errors->has('description')) ? ' glyphicon-remove' : ' glyphicon-ok' }} form-control-feedback"></span>
                     @endif
